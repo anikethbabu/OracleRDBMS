@@ -1,0 +1,54 @@
+Q1. 
+SELECT empno, ename, sal, Round(sal*1.15) sal_name 
+FROM emp 
+WHERE deptno = 10;
+
+
+
+Q2. 
+SELECT empno, ename, sal, comm, sal + comm TOTAL_INCOME 
+FROM emp 
+WHERE deptno = 30;
+
+
+
+Q3. 
+SELECT ename, job, length(ename) name_length 
+FROM emp 
+WHERE length(ename) <= 5 
+ORDER BY name_length DESC;
+
+
+
+Q4.
+SELECT ename, deptno, sal, lpad(sal, 15, '$') SAL_FORMAT
+FROM emp
+WHERE deptno = 30
+ORDER BY sal;
+
+
+
+Q5.
+ALTER TABLE emp
+ADD (password char(7));
+
+
+
+Q6.
+UPDATE emp
+SET password = CONCAT(CONCAT(SUBSTR(ENAME,1,3), SUBSTR(deptno,1,2)), SUBSTR(empno,1,2));
+
+
+
+Q7. # The question stated that to list sal_star by descending but the results are ascending.
+SELECT ename, sal, rpad('*', sal/100, '*') sal_star
+FROM emp
+ORDER BY sal_star;
+
+
+
+Q8.
+SELECT empno AS "EmpNo", ename AS "Emp Name",  length(ename) AS "Name Length", REGEXP_COUNT(ename, 'S') AS "# Of S", REGEXP_COUNT(ename, 'L') AS "# Of L" 
+FROM emp;
+
+
